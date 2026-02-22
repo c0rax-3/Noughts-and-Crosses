@@ -61,3 +61,19 @@ class Player {
     } 
 }
 
+class Board {
+    constructor() {
+        this.cells = [
+            [new BlankMarker(), new BlankMarker(), new BlankMarker()], 
+            [new BlankMarker(), new BlankMarker(), new BlankMarker()], 
+            [new BlankMarker(), new BlankMarker(), new BlankMarker()]
+        ];
+    }
+
+    getCell(row, column) {
+        return this.cells[row][column]
+    }
+}
+
+const myBoard = new Board()
+console.log(myBoard.getCell(1,0))
