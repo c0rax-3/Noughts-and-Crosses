@@ -40,11 +40,6 @@ class BlankMarker extends Marker {
     }
 }
 
-const marker1 = new BlankMarker();
-
-const marker2 = new BlankMarker();
-console.log(marker1.equals(marker2))
-
 class Player {
 
     constructor(name, marker) {
@@ -52,13 +47,17 @@ class Player {
         this.marker = marker;
     }
 
-    changeName(newName) {
-        this.name = newName
+    getName() {
         return this.name
-    } 
-
-    placeMarker(marker) {
-
     }
 
+    getMarker() {
+        return this.marker
+    }
+
+    changeName(newName) {
+        this.name = newName;
+        return this.name;
+    } 
 }
+
