@@ -77,6 +77,10 @@ class Board {
     placeMarker(row, column, marker) {
         this.cells[row][column] = marker
     }
+
+    isOccupied(row, column) {
+        return this.cells[row][column].isBlank()
+    }
 }
 
 const myBoard = new Board()
