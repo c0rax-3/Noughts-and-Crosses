@@ -44,3 +44,21 @@ const marker1 = new BlankMarker();
 
 const marker2 = new BlankMarker();
 console.log(marker1.equals(marker2))
+
+class Player {
+
+    constructor(name, marker) {
+        this.name = name;
+        this.marker = marker;
+    }
+
+    changeName(newName) {
+        this.name = newName
+        return this.name
+    } 
+
+    placeMarker(marker) {
+
+    }
+
+}
