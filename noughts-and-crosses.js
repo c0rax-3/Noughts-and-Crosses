@@ -73,7 +73,14 @@ class Board {
     getCell(row, column) {
         return this.cells[row][column]
     }
+
+    placeMarker(row, column, marker) {
+        this.cells[row][column] = marker
+    }
 }
 
 const myBoard = new Board()
+myBoard.placeMarker(1, 0, new Nought())
+myBoard.placeMarker(1, 0, new Cross())
+myBoard.placeMarker(1, 0, new BlankMarker())
 console.log(myBoard.getCell(1,0))
