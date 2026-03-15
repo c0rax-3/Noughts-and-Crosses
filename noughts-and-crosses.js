@@ -83,44 +83,26 @@ class Board {
     }
 
     checkWin() {
-        if (this.getCell(0,0) === this.getCell(0,1) && this.getCell(0,1) === this.getCell(0,2) 
-        && this.isOccupied(0,0)) {
-            return this.getCell(0,0)
-        }
+        const winConditions = [
+            [[0,0], [0,1], [0,2]], 
+            [[1,0], [1,1], [1,2]], 
+            [], 
+            [], 
+            [], 
+            [], 
+            [], 
+            []
+        ]
 
-        if (this.getCell(1,0) === this.getCell(1,1) && this.getCell(1,2) === this.getCell(1,0) 
-        && this.isOccupied(1,0)) {
-            return this.getCell(1,0)
-        }
+        for (let i = 0; i < 8; i++) {
+            const condition = winConditions[i]
+            const [cellA, cellB, cellC] = condition
 
-        if (this.getCell(2,0) === this.getCell(2,1) && this.getCell(2,0) === this.getCell(2,2) 
-        && this.isOccupied(2,0)) {
-            return this.getCell(2,0)
-        }
-
-        if (this.getCell(0,0) === this.getCell(1,0) && this.getCell(1,0) === this.getCell(2,0) 
-        && this.isOccupied(0,0)) {
-            return this.getCell(0,0)
-        }
-
-        if (this.getCell(0,1) === this.getCell(1,1) && this.getCell(1,1) === this.getCell(2,1) 
-        && this.isOccupied(0,1)) {
-            return this.getCell(0,1)
-        }
-
-        if (this.getCell(0,2) === this.getCell(1,2) && this.getCell(1,2) === this.getCell(2,2) 
-        && this.isOccupied(0,2)) {
-            return this.getCell(0,2)
-        }
-
-        if (this.getCell(0,0) === this.getCell(1,1) && this.getCell(1,1) === this.getCell(2,2) 
-        && this.isOccupied(0,0)) {
-            return this.getCell(0,0)
-        }
-
-        if (this.getCell(0,2) === this.getCell(1,1) && this.getCell(1,0) === this.getCell(2,0) 
-        && this.isOccupied(0,2)) {
-            return this.getCell(0,2)
+            if (this.getCell(cellA[0], cellA[1]) === this.getCell(cellB[0], cellB[1]) 
+                && this.getCell(cellA[0], cellA[1]) === this.getCell(cellC[0], cellC[1]) 
+                && this.isOccupied(cellA[0], cellA[1])) {
+                    return this.getCell(cellA[0], cellA[1])
+            }
         }
         return null
     }
@@ -130,7 +112,7 @@ class Board {
         if (winState !== null) {
             return false
         }
-        
+
         let allFull = true
         for (let i = 0; i < 3; i++) {
             for (let j = 0; j < 3; j++) {
