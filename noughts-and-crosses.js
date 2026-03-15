@@ -82,7 +82,7 @@ class Board {
         return !(this.cells[row][column].isBlank())
     }
 
-    checkEndCondition() {
+    checkWin() {
         if (this.getCell(0,0) === this.getCell(0,1) && this.getCell(0,1) === this.getCell(0,2) 
         && this.isOccupied(0,0)) {
             return this.getCell(0,0)
@@ -122,7 +122,15 @@ class Board {
         && this.isOccupied(0,2)) {
             return this.getCell(0,2)
         }
+        return null
+    }
 
+    checkDraw() {
+        const winState = this.checkWin()
+        if (winState !== null) {
+            return false
+        }
+        
         let allFull = true
         for (let i = 0; i < 3; i++) {
             for (let j = 0; j < 3; j++) {
@@ -132,13 +140,10 @@ class Board {
                 }
             }
         }
-
-        if (allFull) {
-            return 'draw'
-        }
-        return null
+        return allFull
     }
 }
+
 
 
 const myBoard = new Board()
