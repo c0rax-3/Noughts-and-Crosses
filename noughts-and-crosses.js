@@ -70,28 +70,32 @@ class Board {
         ];
     }
 
+    isOccupied(row, column) {
+        return !(this.cells[row][column].isBlank())
+    }
+
     getCell(row, column) {
         return this.cells[row][column]
     }
 
     placeMarker(row, column, marker) {
-        this.cells[row][column] = marker
-    }
-
-    isOccupied(row, column) {
-        return !(this.cells[row][column].isBlank())
+        if (this.cells[row][column].isOccupied())  {
+            this.cells[row][column] = marker
+        } else {
+            return false
+        }
     }
 
     checkWin() {
         const winConditions = [
             [[0,0], [0,1], [0,2]], 
             [[1,0], [1,1], [1,2]], 
-            [], 
-            [], 
-            [], 
-            [], 
-            [], 
-            []
+            [[2,0], [2,1], [2,2]], 
+            [[0,0], [1,0], [2,0]], 
+            [[0,1], [1,1], [2,1]], 
+            [[0,2], [1,2], [2,2]], 
+            [[0,0], [1,1], [2,2]], 
+            [[2,0], [1,1], [0,2]]
         ]
 
         for (let i = 0; i < 8; i++) {
@@ -124,12 +128,20 @@ class Board {
         }
         return allFull
     }
+
+    resetBoard() {
+        this.cells = [
+            [new BlankMarker(), new BlankMarker(), new BlankMarker()], 
+            [new BlankMarker(), new BlankMarker(), new BlankMarker()], 
+            [new BlankMarker(), new BlankMarker(), new BlankMarker()]
+        ];
+    }
 }
 
 
 
-const myBoard = new Board()
-myBoard.placeMarker(0, 0, new Nought())
-myBoard.placeMarker(0, 0, new Cross())
-myBoard.placeMarker(1, 0, new BlankMarker())
-console.log(myBoard.getCell(1,0))
+// const myBoard = new Board()
+// myBoard.placeMarker(0, 0, new Nought())
+// myBoard.placeMarker(0, 0, new Cross())
+// myBoard.placeMarker(1, 0, new BlankMarker())
+// console.log(myBoard.getCell(1,0))
