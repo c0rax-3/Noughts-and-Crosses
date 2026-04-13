@@ -176,13 +176,15 @@ class Board {
 }
 
 class Game {
-  constructor() {}
+  constructor() {
+    this.board = new Board()
+  }
 
-  turnPlayer() {
+  getTurnPlayer() {
     let allBlank = true;
     for (let i = 0; i < 3; i++) {
       for (let j = 0; j < 3; j++) {
-        const cellBlank = this.isBlank(i, j);
+        const cellBlank = !this.board.isOccupied(i, j);
         if (!cellBlank) {
           allBlank = false;
         }
@@ -198,17 +200,16 @@ class Game {
     } else {
       if (turns[turns.length - 1] % 2 === 0) {
         turnPlayer = "Nought";
+        i++
       } else {
         turnPlayer = "Cross";
+        i++
       }
     }
   }
 }
 
-// const myBoard = new Board();
-// myBoard.placeMarker(0, 0, new Nought());
-// myBoard.placeMarker(1, 0, new Nought());
-// myBoard.placeMarker(2, 0, new Nought());
-// console.log(myBoard.getCell(1, 0));
-// console.log(myBoard.getCell(2, 0));
-// console.log(myBoard.getCell(1, 0).equals(myBoard.getCell(2, 0)));
+const myGame = new Game();
+console.log(myGame.getTurnPlayer())
+
+
