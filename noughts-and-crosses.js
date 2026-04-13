@@ -191,10 +191,11 @@ class Game {
       }
     }
 
+    let turnPlayer = "";
+    const turns = [];
+    let i = 0;
     if (allBlank) {
-      const turns = [];
-      const i = 0;
-      let turnPlayer = "Nought";
+      turnPlayer = "Nought";
       turns.push(i);
       i++;
     } else {
@@ -206,10 +207,12 @@ class Game {
         i++
       }
     }
+    return turnPlayer
   }
 }
 
 const myGame = new Game();
+console.log(myGame.getTurnPlayer())
 console.log(myGame.getTurnPlayer())
 
 
