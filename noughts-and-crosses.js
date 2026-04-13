@@ -134,8 +134,12 @@ class Board {
       const [cellA, cellB, cellC] = condition;
 
       if (
-        this.getCell(cellA[0], cellA[1]).equals(this.getCell(cellB[0], cellB[1])) &&
-        this.getCell(cellA[0], cellA[1]).equals(this.getCell(cellC[0], cellC[1])) &&
+        this.getCell(cellA[0], cellA[1]).equals(
+          this.getCell(cellB[0], cellB[1]),
+        ) &&
+        this.getCell(cellA[0], cellA[1]).equals(
+          this.getCell(cellC[0], cellC[1]),
+        ) &&
         this.isOccupied(cellA[0], cellA[1])
       ) {
         return this.getCell(cellA[0], cellA[1]);
@@ -201,8 +205,10 @@ class Game {
   }
 }
 
-// const myBoard = new Board()
-// myBoard.placeMarker(0, 0, new Nought())
-// myBoard.placeMarker(0, 0, new Cross())
-// myBoard.placeMarker(1, 0, new BlankMarker())
-// console.log(myBoard.getCell(1,0))
+// const myBoard = new Board();
+// myBoard.placeMarker(0, 0, new Nought());
+// myBoard.placeMarker(1, 0, new Nought());
+// myBoard.placeMarker(2, 0, new Nought());
+// console.log(myBoard.getCell(1, 0));
+// console.log(myBoard.getCell(2, 0));
+// console.log(myBoard.getCell(1, 0).equals(myBoard.getCell(2, 0)));
