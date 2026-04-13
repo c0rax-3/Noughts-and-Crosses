@@ -178,7 +178,9 @@ class Board {
 class Game {
   constructor() {
     this.board = new Board()
-    this.turnPlayer = 'Nought'
+    this.player1 = new Player('foo', new Nought())
+    this.player2 = new Player('bar', new Cross())
+    this.turnPlayer = this.player1
   }
 
   getTurnPlayer() {
@@ -186,16 +188,21 @@ class Game {
   }
 
   changeTurnPlayer() {
-    if (this.getTurnPlayer() === 'Nought') {
-        this.turnPlayer = 'Cross'
+    if (this.getTurnPlayer() === this.player1) {
+        this.turnPlayer = this.player2
     } else {
-        this.turnPlayer = 'Nought'
+        this.turnPlayer = this.player1
     }
   }
 }
 
 const myGame = new Game();
 console.log(myGame.getTurnPlayer())
+myGame.changeTurnPlayer()
+console.log(myGame.getTurnPlayer())
+myGame.changeTurnPlayer()
+console.log(myGame.getTurnPlayer())
+myGame.changeTurnPlayer()
 console.log(myGame.getTurnPlayer())
 
 
