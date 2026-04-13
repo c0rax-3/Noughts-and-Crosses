@@ -134,8 +134,8 @@ class Board {
       const [cellA, cellB, cellC] = condition;
 
       if (
-        this.getCell(cellA[0], cellA[1]) === this.getCell(cellB[0], cellB[1]) &&
-        this.getCell(cellA[0], cellA[1]) === this.getCell(cellC[0], cellC[1]) &&
+        this.getCell(cellA[0], cellA[1]).equals(this.getCell(cellB[0], cellB[1])) &&
+        this.getCell(cellA[0], cellA[1]).equals(this.getCell(cellC[0], cellC[1])) &&
         this.isOccupied(cellA[0], cellA[1])
       ) {
         return this.getCell(cellA[0], cellA[1]);
