@@ -178,36 +178,19 @@ class Board {
 class Game {
   constructor() {
     this.board = new Board()
+    this.turnPlayer = 'Nought'
   }
 
   getTurnPlayer() {
-    let allBlank = true;
-    for (let i = 0; i < 3; i++) {
-      for (let j = 0; j < 3; j++) {
-        const cellBlank = !this.board.isOccupied(i, j);
-        if (!cellBlank) {
-          allBlank = false;
-        }
-      }
-    }
+    return this.turnPlayer
+  }
 
-    let turnPlayer = "";
-    const turns = [];
-    let i = 0;
-    if (allBlank) {
-      turnPlayer = "Nought";
-      turns.push(i);
-      i++;
+  changeTurnPlayer() {
+    if (this.getTurnPlayer() === 'Nought') {
+        this.turnPlayer = 'Cross'
     } else {
-      if (turns[turns.length - 1] % 2 === 0) {
-        turnPlayer = "Nought";
-        i++
-      } else {
-        turnPlayer = "Cross";
-        i++
-      }
+        this.turnPlayer = 'Nought'
     }
-    return turnPlayer
   }
 }
 
