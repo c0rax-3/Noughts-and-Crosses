@@ -142,15 +142,15 @@ class Board {
         ) &&
         this.isOccupied(cellA[0], cellA[1])
       ) {
-        return this.getCell(cellA[0], cellA[1]);
+        return true;
       }
     }
-    return null;
+    return false;
   }
 
   checkDraw() {
     const winState = this.checkWin();
-    if (winState !== null) {
+    if (winState === true) {
       return false;
     }
 
@@ -188,21 +188,22 @@ class Game {
   }
 
   changeTurnPlayer() {
-    if (this.getTurnPlayer() === this.player1) {
-        this.turnPlayer = this.player2
-    } else {
-        this.turnPlayer = this.player1
+    if (!this.board.checkWin())
+      if (this.getTurnPlayer() === this.player1) {
+          this.turnPlayer = this.player2
+      } else {
+          this.turnPlayer = this.player1
+      }
+  }
+
+  isEnded() {
+    if (this.board.checkWin()) {
+      return this.getTurnPlayer()
+    }
+
+    if (this.board.checkDraw()) {
+      return false
     }
   }
 }
-
-const myGame = new Game();
-console.log(myGame.getTurnPlayer())
-myGame.changeTurnPlayer()
-console.log(myGame.getTurnPlayer())
-myGame.changeTurnPlayer()
-console.log(myGame.getTurnPlayer())
-myGame.changeTurnPlayer()
-console.log(myGame.getTurnPlayer())
-
 
