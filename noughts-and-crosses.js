@@ -194,7 +194,6 @@ class Game {
   }
 
   changeTurnPlayer() {
-    if (!this.board.checkWin())
       if (this.getTurnPlayer() === this.player1) {
           this.turnPlayer = this.player2
       } else {
@@ -204,17 +203,34 @@ class Game {
 
   isEnded() {
     if (this.board.checkWin()) {
-      return this.getTurnPlayer()
+      return 'win'
     }
 
     if (this.board.checkDraw()) {
-      return true
+      return 'draw'
     }
+    return 'continues'
+  }
+
+  announceWinner(player) {
+    console.log(`${player.getName()} WON!`)
+  }
+
+  announceDraw() {
+    console.log('DRAW!')
   }
 
   playTurn(row, column) {
     const turnPlayer = this.getTurnPlayer()
     this.board.placeMarker(row, column, turnPlayer.getMarker())
+    if (this.isEnded() === 'win') {
+      this.announceWinner(turnPlayer)
+      return
+    }
+    if (this.isEnded() === 'draw') {
+      this.announceDraw()
+      return
+    }
     this.changeTurnPlayer()
   }
 }
@@ -226,6 +242,6 @@ myGame.playTurn(1,1)
 myGame.playTurn(0,2)
 myGame.playTurn(2,1)
 myGame.playTurn(0,1)
+myGame.playTurn(1,0)
 myGame.playTurn(0,0)
-myGame.playTurn(2,2)
 console.log(myGame.board)
