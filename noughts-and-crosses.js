@@ -78,7 +78,7 @@ class Board {
   }
 
   placeMarker(row, column, marker) {
-    if (this.cells[row][column].isBlank()) {
+    if (this.cells[row][column].isBlank() && !this.checkWin()) {
       this.cells[row][column] = marker;
     } else {
       return false;
