@@ -80,8 +80,9 @@ class Board {
   placeMarker(row, column, marker) {
     if (this.cells[row][column].isBlank() && !this.checkWin()) {
       this.cells[row][column] = marker;
+      return true
     } else {
-      return false;
+      return false; //this represents a failure to place a marker
     }
   }
 
@@ -178,9 +179,14 @@ class Board {
 class Game {
   constructor() {
     this.board = new Board()
-    this.player1 = new Player('foo', new Nought())
-    this.player2 = new Player('bar', new Cross())
+    this.player1 = new Player('Player1', new Nought())
+    this.player2 = new Player('Player2', new Cross())
     this.turnPlayer = this.player1
+  }
+
+  changeNames(player1Name, player2Name) {
+    this.player1.changeName(player1Name)
+    this.player2.changeName(player2Name)
   }
 
   getTurnPlayer() {
@@ -202,8 +208,24 @@ class Game {
     }
 
     if (this.board.checkDraw()) {
-      return false
+      return true
     }
+  }
+
+  playTurn(row, column) {
+    const turnPlayer = this.getTurnPlayer()
+    this.board.placeMarker(row, column, turnPlayer.getMarker())
+    this.changeTurnPlayer()
   }
 }
 
+
+const myGame = new Game()
+myGame.changeNames('Alice', 'Bob')
+myGame.playTurn(1,1)
+myGame.playTurn(0,2)
+myGame.playTurn(2,1)
+myGame.playTurn(0,1)
+myGame.playTurn(0,0)
+myGame.playTurn(2,2)
+console.log(myGame.board)
