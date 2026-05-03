@@ -238,6 +238,11 @@ class Game {
     }
     this.changeTurnPlayer();
   }
+
+  resetGame() {
+    this.board.resetBoard();
+    this.turnPlayer = this.player1;
+  }
 }
 
 const myGame = new Game();
@@ -249,7 +254,7 @@ myGame.playTurn(0, 1);
 myGame.playTurn(1, 0);
 myGame.playTurn(0, 0);
 console.log(myGame.board);
-myGame.board.resetBoard();
+myGame.resetGame();
 myGame.playTurn(1, 1);
 myGame.playTurn(0, 2);
 myGame.playTurn(2, 1);
