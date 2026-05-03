@@ -173,6 +173,7 @@ class Board {
       [new BlankMarker(), new BlankMarker(), new BlankMarker()],
       [new BlankMarker(), new BlankMarker(), new BlankMarker()],
     ];
+
   }
 }
 
@@ -194,22 +195,24 @@ class Game {
   }
 
   changeTurnPlayer() {
-    if (this.getTurnPlayer() === this.player1) {
-        this.turnPlayer = this.player2
-    } else {
-        this.turnPlayer = this.player1
+    if (!this.isEnded()) {
+      if (this.getTurnPlayer() === this.player1) {
+          this.turnPlayer = this.player2
+      } else {
+          this.turnPlayer = this.player1
+      }
     }
   }
 
   isEnded() {
     if (this.board.checkWin()) {
-      this.announceWinner()
+      this.announceWinner(this.getTurnPlayer())
       return true
     }
 
     if (this.board.checkDraw()) {
       this.announceDraw()
-      return true
+      return true 
     }
     return false
   }
@@ -225,8 +228,12 @@ class Game {
   playTurn(row, column) {
     if (!this.isEnded()) {
       const turnPlayer = this.getTurnPlayer()
-      this.board.placeMarker(row, column, turnPlayer.getMarker())
-      this.changeTurnPlayer()
+      const placed = this.board.placeMarker(row, column, turnPlayer.getMarker())
+      if (placed) {
+        this.changeTurnPlayer()
+      } else {
+        console.log('You cant do that!')
+      }
     } else {
       return 'Game ended' 
     }
@@ -236,6 +243,14 @@ class Game {
 
 const myGame = new Game()
 myGame.changeNames('Alice', 'Bob')
+myGame.playTurn(1,1)
+myGame.playTurn(0,2)
+myGame.playTurn(2,1)
+myGame.playTurn(0,1)
+myGame.playTurn(1,0)
+myGame.playTurn(0,0)
+console.log(myGame.board)
+myGame.board.resetBoard()
 myGame.playTurn(1,1)
 myGame.playTurn(0,2)
 myGame.playTurn(2,1)
