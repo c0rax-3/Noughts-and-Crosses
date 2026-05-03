@@ -201,7 +201,7 @@ class Game {
   }
 
   changeTurnPlayer() {
-    if (this.isEnded() === GameResultTypes.Pending) {
+    if (this.getGameResultType() === GameResultTypes.Pending) {
       if (this.getTurnPlayer() === this.player1) {
         this.turnPlayer = this.player2;
       } else {
@@ -210,7 +210,7 @@ class Game {
     }
   }
 
-  isEnded() {
+  getGameResultType() {
     if (this.board.checkWin()) {
       return GameResultTypes.Win;
     }
@@ -234,7 +234,7 @@ class Game {
   }
 
   playTurn(row, column) {
-    const gameResult = this.isEnded();
+    const gameResult = this.getGameResultType();
     if (gameResult === GameResultTypes.Win) {
       this.announceWinner(this.getTurnPlayer());
       return;
