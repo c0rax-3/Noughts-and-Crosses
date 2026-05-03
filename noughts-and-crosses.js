@@ -176,6 +176,13 @@ class Board {
   }
 }
 
+// enum example!
+const GameResultTypes = {
+  Win: "win",
+  Draw: "draw",
+  Pending: "pending",
+};
+
 class Game {
   constructor() {
     this.board = new Board();
@@ -205,15 +212,13 @@ class Game {
 
   isEnded() {
     if (this.board.checkWin()) {
-      this.announceWinner(this.getTurnPlayer());
-      return true;
+      return GameResultTypes.Win;
     }
 
     if (this.board.checkDraw()) {
-      this.announceDraw();
-      return true;
+      return GameResultTypes.Draw;
     }
-    return false;
+    return GameResultTypes.Pending;
   }
 
   announceWinner(player) {
@@ -225,8 +230,13 @@ class Game {
   }
 
   playTurn(row, column) {
-    if (this.isEnded()) {
-      console.log("Game Ended!");
+    const gameResult = this.isEnded();
+    if (gameResult === GameResultTypes.Win) {
+      this.announceWinner(this.getTurnPlayer());
+      return;
+    }
+    if (gameResult === GameResultTypes.Draw) {
+      this.announceDraw();
       return;
     }
 
