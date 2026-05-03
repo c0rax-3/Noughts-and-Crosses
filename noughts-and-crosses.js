@@ -201,7 +201,7 @@ class Game {
   }
 
   changeTurnPlayer() {
-    if (!this.isEnded()) {
+    if (this.isEnded() === GameResultTypes.Pending) {
       if (this.getTurnPlayer() === this.player1) {
         this.turnPlayer = this.player2;
       } else {
