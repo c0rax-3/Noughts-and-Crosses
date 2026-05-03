@@ -80,7 +80,7 @@ class Board {
   placeMarker(row, column, marker) {
     if (this.cells[row][column].isBlank() && !this.checkWin()) {
       this.cells[row][column] = marker;
-      return true
+      return true;
     } else {
       return false; //this represents a failure to place a marker
     }
@@ -173,88 +173,87 @@ class Board {
       [new BlankMarker(), new BlankMarker(), new BlankMarker()],
       [new BlankMarker(), new BlankMarker(), new BlankMarker()],
     ];
-
   }
 }
 
 class Game {
   constructor() {
-    this.board = new Board()
-    this.player1 = new Player('Player1', new Nought())
-    this.player2 = new Player('Player2', new Cross())
-    this.turnPlayer = this.player1
+    this.board = new Board();
+    this.player1 = new Player("Player1", new Nought());
+    this.player2 = new Player("Player2", new Cross());
+    this.turnPlayer = this.player1;
   }
 
   changeNames(player1Name, player2Name) {
-    this.player1.changeName(player1Name)
-    this.player2.changeName(player2Name)
+    this.player1.changeName(player1Name);
+    this.player2.changeName(player2Name);
   }
 
   getTurnPlayer() {
-    return this.turnPlayer
+    return this.turnPlayer;
   }
 
   changeTurnPlayer() {
     if (!this.isEnded()) {
       if (this.getTurnPlayer() === this.player1) {
-          this.turnPlayer = this.player2
+        this.turnPlayer = this.player2;
       } else {
-          this.turnPlayer = this.player1
+        this.turnPlayer = this.player1;
       }
     }
   }
 
   isEnded() {
     if (this.board.checkWin()) {
-      this.announceWinner(this.getTurnPlayer())
-      return true
+      this.announceWinner(this.getTurnPlayer());
+      return true;
     }
 
     if (this.board.checkDraw()) {
-      this.announceDraw()
-      return true 
+      this.announceDraw();
+      return true;
     }
-    return false
+    return false;
   }
 
   announceWinner(player) {
-    console.log(`${player.getName()} WON!`)
+    console.log(`${player.getName()} WON!`);
   }
 
   announceDraw() {
-    console.log('DRAW!')
+    console.log("DRAW!");
   }
 
   playTurn(row, column) {
-    if (!this.isEnded()) {
-      const turnPlayer = this.getTurnPlayer()
-      const placed = this.board.placeMarker(row, column, turnPlayer.getMarker())
-      if (placed) {
-        this.changeTurnPlayer()
-      } else {
-        console.log('You cant do that!')
-      }
-    } else {
-      return 'Game ended' 
+    if (this.isEnded()) {
+      console.log("Game Ended!");
+      return;
     }
+
+    const turnPlayer = this.getTurnPlayer();
+    const placed = this.board.placeMarker(row, column, turnPlayer.getMarker());
+    if (!placed) {
+      console.log("You can't do that!");
+      return;
+    }
+    this.changeTurnPlayer();
   }
 }
 
-
-const myGame = new Game()
-myGame.changeNames('Alice', 'Bob')
-myGame.playTurn(1,1)
-myGame.playTurn(0,2)
-myGame.playTurn(2,1)
-myGame.playTurn(0,1)
-myGame.playTurn(1,0)
-myGame.playTurn(0,0)
-console.log(myGame.board)
-myGame.board.resetBoard()
-myGame.playTurn(1,1)
-myGame.playTurn(0,2)
-myGame.playTurn(2,1)
-myGame.playTurn(0,1)
-myGame.playTurn(1,0)
-myGame.playTurn(0,0)
-console.log(myGame.board)
+const myGame = new Game();
+myGame.changeNames("Alice", "Bob");
+myGame.playTurn(1, 1);
+myGame.playTurn(0, 2);
+myGame.playTurn(2, 1);
+myGame.playTurn(0, 1);
+myGame.playTurn(1, 0);
+myGame.playTurn(0, 0);
+console.log(myGame.board);
+myGame.board.resetBoard();
+myGame.playTurn(1, 1);
+myGame.playTurn(0, 2);
+myGame.playTurn(2, 1);
+myGame.playTurn(0, 1);
+myGame.playTurn(1, 0);
+myGame.playTurn(0, 0);
+console.log(myGame.board);
