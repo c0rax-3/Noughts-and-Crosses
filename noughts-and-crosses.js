@@ -229,6 +229,10 @@ class Game {
     console.log("DRAW!");
   }
 
+  announceInvalidPlacement() {
+    console.log("You can't do that!");
+  }
+
   playTurn(row, column) {
     const gameResult = this.isEnded();
     if (gameResult === GameResultTypes.Win) {
@@ -243,7 +247,7 @@ class Game {
     const turnPlayer = this.getTurnPlayer();
     const placed = this.board.placeMarker(row, column, turnPlayer.getMarker());
     if (!placed) {
-      console.log("You can't do that!");
+      this.announceInvalidPlacement();
       return;
     }
     this.changeTurnPlayer();
