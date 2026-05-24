@@ -233,6 +233,13 @@ class Game {
     console.log("You can't do that!");
   }
 
+  displayMarkerPlaced(row, column, playerMarker) {
+    //cell id is (3 x column) + row in terms of cell coords
+    const cellId = `cell${3 * column + row}`
+    const cell = document.querySelector(`.cell#${cellId}`);
+    cell.textContent = 'X';
+  }
+
   playTurn(row, column) {
     const gameResult = this.getGameResultType();
     if (gameResult === GameResultTypes.Win) {
@@ -250,6 +257,7 @@ class Game {
       this.announceInvalidPlacement();
       return;
     }
+    this.displayMarkerPlaced(row, column, turnPlayer.getMarker());
     this.changeTurnPlayer();
   }
 
