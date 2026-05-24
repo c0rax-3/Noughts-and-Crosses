@@ -3,3 +3,14 @@ body {
   justify-content: column;
   align-items: center;
 }
+
+.body {
+  display: flex;
+  justify-content: row;
+  align-items: space-between;
+}
+
+.body .Buttons {
+  display: flex;
+  justify-content: column;
+}
