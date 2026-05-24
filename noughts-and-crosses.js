@@ -259,20 +259,3 @@ class Game {
   }
 }
 
-const myGame = new Game();
-myGame.changeNames("Alice", "Bob");
-myGame.playTurn(1, 1);
-myGame.playTurn(0, 2);
-myGame.playTurn(2, 1);
-myGame.playTurn(0, 1);
-myGame.playTurn(1, 0);
-myGame.playTurn(0, 0);
-console.log(myGame.board);
-myGame.resetGame();
-myGame.playTurn(1, 1);
-myGame.playTurn(0, 2);
-myGame.playTurn(2, 1);
-myGame.playTurn(0, 1);
-myGame.playTurn(1, 0);
-myGame.playTurn(0, 0);
-console.log(myGame.board);
