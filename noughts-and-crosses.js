@@ -237,7 +237,13 @@ class Game {
     //cell id is (3 x column) + row in terms of cell coords
     const cellId = `cell${3 * column + row}`
     const cell = document.querySelector(`.cell#${cellId}`);
-    cell.textContent = 'X';
+    if (playerMarker.isNought()) {
+      cell.textContent = 'O';
+    } else if (playerMarker.isCross()) {
+      cell.textContent = 'X';
+    } else {
+      cell.textContent = '';
+    }
   }
 
   playTurn(row, column) {
