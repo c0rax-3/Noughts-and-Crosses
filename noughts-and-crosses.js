@@ -189,6 +189,46 @@ class Game {
     this.player1 = new Player("Player1", new Nought());
     this.player2 = new Player("Player2", new Cross());
     this.turnPlayer = this.player1;
+    this.init()
+  }
+
+  init() {
+    const cell0 = document.querySelector('.cell#cell0')
+    cell0.addEventListener("click", () => {
+      alert('0')
+    })
+    const cell1 = document.querySelector('.cell#cell1')
+    cell1.addEventListener("click", () => {
+      alert('1')
+    })
+    const cell2 = document.querySelector('.cell#cell2')
+    cell2.addEventListener("click", () => {
+      alert('2')
+    })
+    const cell3 = document.querySelector('.cell#cell3')
+    cell3.addEventListener("click", () => {
+      alert('3')
+    })
+    const cell4 = document.querySelector('.cell#cell4')
+    cell4.addEventListener("click", () => {
+      alert('4')
+    })
+    const cell5 = document.querySelector('.cell#cell5')
+    cell5.addEventListener("click", () => {
+      alert('5')
+    })
+    const cell6 = document.querySelector('.cell#cell6')
+    cell6.addEventListener("click", () => {
+      alert('6')
+    })
+    const cell7 = document.querySelector('.cell#cell7')
+    cell7.addEventListener("click", () => {
+      alert('7')
+    })
+    const cell8 = document.querySelector('.cell#cell8')
+    cell8.addEventListener("click", () => {
+      alert('8')
+    })
   }
 
   changeNames(player1Name, player2Name) {
@@ -274,19 +314,19 @@ class Game {
 }
 
 const myGame = new Game();
-myGame.changeNames("Alice", "Bob");
-myGame.playTurn(1, 1);
-myGame.playTurn(0, 2);
-myGame.playTurn(2, 1);
-myGame.playTurn(0, 1);
-myGame.playTurn(1, 0);
-myGame.playTurn(0, 0);
-console.log(myGame.board);
-myGame.resetGame();
-myGame.playTurn(1, 1);
-myGame.playTurn(0, 2);
-myGame.playTurn(2, 1);
-myGame.playTurn(0, 1);
-myGame.playTurn(1, 0);
-myGame.playTurn(0, 0);
-console.log(myGame.board);
+// myGame.changeNames("Alice", "Bob");
+// myGame.playTurn(1, 1);
+// myGame.playTurn(0, 2);
+// myGame.playTurn(2, 1);
+// myGame.playTurn(0, 1);
+// myGame.playTurn(1, 0);
+// myGame.playTurn(0, 0);
+// console.log(myGame.board);
+// myGame.resetGame();
+// myGame.playTurn(1, 1);
+// myGame.playTurn(0, 2);
+// myGame.playTurn(2, 1);
+// myGame.playTurn(0, 1);
+// myGame.playTurn(1, 0);
+// myGame.playTurn(0, 0);
+// console.log(myGame.board);
