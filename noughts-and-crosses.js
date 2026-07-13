@@ -229,6 +229,10 @@ class Game {
     cell8.addEventListener("click", () => {
       this.playTurn(2,2)
     })
+    const reset = document.querySelector('.reset')
+    reset.addEventListener("click", () => {
+      this.resetGame()
+    })
   }
 
   changeNames(player1Name, player2Name) {
