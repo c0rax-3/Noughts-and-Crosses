@@ -325,6 +325,3 @@ class Game {
     this.turnPlayer = this.player1;
   }
 }
-
-const myGame = new Game();
-
