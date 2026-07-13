@@ -262,15 +262,17 @@ class Game {
   }
 
   announceWinner(player) {
-    console.log(`${player.getName()} WON!`);
+    const resultBoard = document.querySelector(".result")
+    resultBoard.textContent = `${player.getName()} WON!`
   }
 
   announceDraw() {
-    console.log("DRAW!");
+    const resultBoard = document.querySelector(".result")
+    resultBoard.textContent = 'DRAW'
   }
 
   announceInvalidPlacement() {
-    console.log("You can't do that!");
+    alert("You can't do that!");
   }
 
   displayMarkerPlaced(row, column, playerMarker) {
@@ -314,19 +316,4 @@ class Game {
 }
 
 const myGame = new Game();
-// myGame.changeNames("Alice", "Bob");
-// myGame.playTurn(1, 1);
-// myGame.playTurn(0, 2);
-// myGame.playTurn(2, 1);
-// myGame.playTurn(0, 1);
-// myGame.playTurn(1, 0);
-// myGame.playTurn(0, 0);
-// console.log(myGame.board);
-// myGame.resetGame();
-// myGame.playTurn(1, 1);
-// myGame.playTurn(0, 2);
-// myGame.playTurn(2, 1);
-// myGame.playTurn(0, 1);
-// myGame.playTurn(1, 0);
-// myGame.playTurn(0, 0);
-// console.log(myGame.board);
+
