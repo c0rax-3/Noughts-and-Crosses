@@ -195,39 +195,39 @@ class Game {
   init() {
     const cell0 = document.querySelector('.cell#cell0')
     cell0.addEventListener("click", () => {
-      alert('0')
+      this.playTurn(0,0)
     })
     const cell1 = document.querySelector('.cell#cell1')
     cell1.addEventListener("click", () => {
-      alert('1')
+      this.playTurn(1,0)
     })
     const cell2 = document.querySelector('.cell#cell2')
     cell2.addEventListener("click", () => {
-      alert('2')
+      this.playTurn(2,0)
     })
     const cell3 = document.querySelector('.cell#cell3')
     cell3.addEventListener("click", () => {
-      alert('3')
+      this.playTurn(0,1)
     })
     const cell4 = document.querySelector('.cell#cell4')
     cell4.addEventListener("click", () => {
-      alert('4')
+      this.playTurn(1,1)
     })
     const cell5 = document.querySelector('.cell#cell5')
     cell5.addEventListener("click", () => {
-      alert('5')
+      this.playTurn(2,1)
     })
     const cell6 = document.querySelector('.cell#cell6')
     cell6.addEventListener("click", () => {
-      alert('6')
+      this.playTurn(0,2)
     })
     const cell7 = document.querySelector('.cell#cell7')
     cell7.addEventListener("click", () => {
-      alert('7')
+      this.playTurn(1,2)
     })
     const cell8 = document.querySelector('.cell#cell8')
     cell8.addEventListener("click", () => {
-      alert('8')
+      this.playTurn(2,2)
     })
   }
 
