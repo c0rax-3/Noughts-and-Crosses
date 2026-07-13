@@ -314,6 +314,11 @@ class Game {
   }
 
   resetGame() {
+    const cells = document.querySelectorAll('.cell')
+    for (let i = 0; i < cells.length; i++) {
+      const cell = cells[i];
+      cell.textContent = '';
+    }
     this.board.resetBoard();
     this.turnPlayer = this.player1;
   }
