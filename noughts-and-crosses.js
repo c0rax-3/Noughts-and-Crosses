@@ -315,6 +315,8 @@ class Game {
 
   resetGame() {
     const cells = document.querySelectorAll('.cell')
+    const result = document.querySelector('.result')
+    result.textContent = ''
     for (let i = 0; i < cells.length; i++) {
       const cell = cells[i];
       cell.textContent = '';
